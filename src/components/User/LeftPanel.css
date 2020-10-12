@@ -1,0 +1,27 @@
+aside{
+    float:left;
+    height:85vh;
+    top:15vh;
+    width:18%;
+    background-color: rgb(87, 95, 114);
+    position: absolute;
+    color:white;
+    font-size:1.1em;
+}
+.aside-title-span{
+    padding-left:30px;
+    margin-top:15%;
+    margin-bottom:10%;
+    text-transform: uppercase;
+}
+.aside-option-div{
+    width:100%;
+    line-height:3;
+    background-color: rgb(87, 95, 114);
+    text-align: center;
+    transition: 0.2s ease-in-out;
+    cursor:pointer;
+}
+.aside-option-div:hover{
+    background-color:rgb(69, 76, 92); 
+}

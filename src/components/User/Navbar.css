@@ -1,0 +1,14 @@
+nav{
+    background-color: rgb(255, 255, 255);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 15vh;
+}
+#nav-left-holder{
+    float:left;
+    width:18%;
+    height:100%;
+    background-color:rgb(55, 220, 250);
+}
