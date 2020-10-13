@@ -5,10 +5,76 @@ nav{
     left: 0;
     right: 0;
     height: 15vh;
+    -webkit-box-shadow: 2px 3px 12px -6px rgba(0,0,0,0.75);
+    -moz-box-shadow: 2px 3px 12px -6px rgba(0,0,0,0.75);
+    box-shadow: 2px 3px 12px -6px rgba(0,0,0,0.75);
+    z-index:1;
+    display: flex;
+    align-items:center;
+        
 }
 #nav-left-holder{
     float:left;
     width:18%;
     height:100%;
+    display: flex;
+
     background-color:rgb(55, 220, 250);
+    font-family: 'Courgette', cursive;
+    color:white;
+    font-size:3em;
+    align-items:center;
+        justify-content:center;
+}
+#healfyIconNav{
+    margin-left:-5%;
+    max-height: 70%;
+    margin-right:5%;
+}
+.option-link-holder{
+    float:left;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin-left:50px;
+    font-size:1.2em;
+    padding-left:20px;
+    padding-right:20px;
+    height:100%;
+    cursor:pointer;
+    transition: 0.2s ease-in-out;
+
+}
+.option-link-holder:hover{
+    color:rgb(55, 220, 250)
+}
+#nav-links-holder{
+    margin-left:50px;
+}
+
+#nav-account-holder{
+    display:flex;
+    align-items:center;
+    margin-left:30%;
+    float:right;
+    height:60%;
+    width:15%;
+    cursor:pointer;
+}
+#profile-picture-holder{
+    width:70px;
+    height:70px;
+    border-radius:50%;
+    background-position: center;
+    background-repeat: no-repeat;
+  background-size: cover;
+    float: left;
+}
+#nav-user-name{
+    float:left;
+    margin-left:10%;
+    font-size:1.3em;
+}
+#nav-profile-img{
+    object-fit: contain;
 }
