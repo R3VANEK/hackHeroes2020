@@ -1,1 +1,0 @@
-# hackHeroes2020
