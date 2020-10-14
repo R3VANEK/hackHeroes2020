@@ -33,7 +33,13 @@ class Navbar extends Component {
 
                 <div id="nav-account-holder">
                     <div id="profile-picture-holder" style={profilePictureSetter}></div>
-                    <p id="nav-user-name">John Doe</p>   
+                    <p id="nav-user-name">John Doe</p>  
+
+                    <div id="nav-account-options-holder">
+                        <div className="nav-account-option">Twoje konto</div>
+                        <div className="nav-account-option">Wyloguj się</div>
+
+                    </div> 
                 </div>
 
             </nav>

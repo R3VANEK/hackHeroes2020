@@ -4,12 +4,14 @@ import './App.css';
 
 
 import Mainholder from './components/User/Mainholder';
+import RegisterForm from './components/Form/RegisterForm';
 
 function App() {
   return (
     <BrowserRouter>
       <Switch>
-
+        
+        <Route path="/register" component={RegisterForm}/>
         <Route path="/" component={Mainholder}/>
         
       </Switch>
