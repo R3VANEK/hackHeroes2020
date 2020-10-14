@@ -40,6 +40,9 @@ INSTALLED_APPS = [
 
     # REST Framework
     'rest_framework',
+
+    # My app
+    'api.apps.ApiConfig',
 ]
 
 MIDDLEWARE = [
