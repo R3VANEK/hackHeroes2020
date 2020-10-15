@@ -25,6 +25,9 @@ urlpatterns = [
     # API Overview
     path('', views.apiOverview, name="api-overview"),
 
+    path('register/', views.registerUser, name="register"),
+    path('showUsers/', views.showUsers, name="showUsers"),
+
     path('task-list/', views.taskList, name="task-list"),
     path('task-detail/<str:pk>/', views.taskDetail, name="task-detail"),
     path('task-create/', views.taskCreate, name="task-create"),

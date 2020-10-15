@@ -6,8 +6,8 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
 # My files import
-from .serializers import TaskSerializer
-from .models import Task
+from .serializers import *
+from .models import *
 
 @api_view(['GET'])
 def apiOverview(request):
@@ -16,6 +16,23 @@ def apiOverview(request):
         'Create': '/task-create/',
     }
     return Response(api_urls)
+
+
+@api_view(['POST'])
+def registerUser(request):
+    user = UserSerializer(data=request.data)
+
+    if user.is_valid():
+        user.save()
+
+    return Response("User created")
+
+
+@api_view(['GET'])
+def showUsers(request):
+    users = User.objects.all()
+    serializer = UserSerializer(users, many=True)
+    return Response(serializer.data)
 
 
 @api_view(['GET'])
