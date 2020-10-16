@@ -62,3 +62,7 @@ box-shadow: 2px 3px 12px -6px rgba(0,0,0,0.75);
     text-decoration: underline;
     text-decoration-color:rgb(55, 220, 250);
 }
+.nav-links{
+    text-decoration: none;
+    color:white;
+}

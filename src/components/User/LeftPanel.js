@@ -1,5 +1,7 @@
 import React from 'react'
+import {NavLink} from 'react-router-dom'
 import './LeftPanel.css'
+
 import videoIcon from '../../icons/video-white.svg';
 import receiptIcon from '../../icons/receipt-white.svg';
 import graphIcon from '../../icons/graph-white.svg';
@@ -16,26 +18,39 @@ const LeftPanel = () =>{
         <aside>
             <p class="aside-title-span">Zakładki</p>
 
-            <div class="aside-option-div">
-                <img src={videoIcon} class="option-img"/>Teleporada
-            </div>
-
+            <NavLink to="/teleporada" class="nav-links">
+                <div class="aside-option-div">
+                    <img src={videoIcon} class="option-img"/>Teleporada
+                </div>
+            </NavLink>
             
-            <div class="aside-option-div">
-                <img src={receiptIcon} class="option-img"/> Twoje recepty
-            </div>
 
-            <div class="aside-option-div">
-                <img src={graphIcon} class="option-img"/> Twoje statystyki
-            </div>
+            <NavLink to="/recepty" class="nav-links">
+                <div class="aside-option-div">
+                    <img src={receiptIcon} class="option-img"/> Twoje recepty
+                </div>
+            </NavLink>
+            
 
-            <div class="aside-option-div">
-                <img src={accountIcon} class="option-img"/> Twoje konto
-            </div>
+            <NavLink to="/statystyki" class="nav-links">
+                <div class="aside-option-div">
+                    <img src={graphIcon} class="option-img"/> Twoje statystyki
+                </div>
+            </NavLink>
+            
 
-            <div class="aside-option-div">
-                <img src={doctorIcon} class="option-img"/> Dostępni lekarze
-            </div>
+            <NavLink to="/konto" class="nav-links">
+                <div class="aside-option-div">
+                    <img src={accountIcon} class="option-img"/> Twoje konto
+                </div>
+            </NavLink>
+            
+            <NavLink to="/lekarze" class="nav-links">
+                <div class="aside-option-div">
+                    <img src={doctorIcon} class="option-img"/> Dostępni lekarze
+                </div>
+            </NavLink>
+            
 
             <p class="aside-title-span">Ostatnie spotkania</p>
              

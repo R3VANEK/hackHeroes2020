@@ -1,20 +1,20 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Navbar from './Navbar';
 import LeftPanel from './LeftPanel';
 import './Mainholder.css'
 
-class Mainholder extends Component {
-    state = {  }
-    render() { 
-        return ( 
+
+
+const Mainholder = (Component) =>{
+        
+    return (props) => (
         <div>
             <Navbar/>
             <LeftPanel/>
-            <main>
-                
-            </main>
-        </div> )
-    }
+            <Component {...props} />
+        </div>
+      );
+        
 }
  
 export default Mainholder;
