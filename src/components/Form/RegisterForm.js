@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Link} from 'react-router-dom';
 import './RegisterForm.css';
 import appIcon from '../../icons/healfy.svg.png';
 
@@ -73,9 +74,12 @@ class RegisterForm extends Component {
                         wszystko w jednym, łatwo dostępnym miejscu. Przekonaj się sam!
                     </p>
 
-                    <button id="login-link-button">
-                        Zaloguj się
-                    </button>
+                    <Link to="/login">
+                        <button id="login-link-button">
+                            Zaloguj się
+                        </button>
+                    </Link>
+                    
                 </section>
 
                 <section id="register-right-holder">

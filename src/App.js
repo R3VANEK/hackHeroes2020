@@ -5,6 +5,7 @@ import './App.css';
 
 import Mainholder from './components/User/Mainholder';
 import RegisterForm from './components/Form/RegisterForm';
+import LoginForm from './components/Form/LoginForm';
 
 import Teleporada from './components/User/Teleporada'
 import Recepty from './components/User/Recepty'
@@ -18,7 +19,8 @@ function App() {
       <Switch>
         
         <Route path="/register" component={RegisterForm}/>
-
+        <Route path="/login" component={LoginForm}/>
+        
         <Route path="/teleporada" component={Mainholder(Teleporada)}/>
         <Route path="/recepty" component={Mainholder(Recepty)}/>
         <Route path="/statystyki" component={Mainholder(Statystyki)}/>
