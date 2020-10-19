@@ -40,11 +40,10 @@ class MedicamentsViewSet(viewsets.ViewSet):
         return Response("Medicaments added succesfuly!")
 
     def put(self, request):
-        current_medicaments = Medicament.objects.filter(doctor = request.user)
+        pass #todo
 
 
-
-    def delete(self, request):
+ delete(self, request):
         medicament_id = request.data['medicament_id']
         medicament = Medicament.objects.filter(id = medicament_id)
         medicament.delete()
