@@ -1,0 +1,36 @@
+#subpage-holder{
+    width: 80%;
+    height:80%;
+    background-color: white;
+    overflow-y: scroll;
+}
+.lekarz-holder{
+    width:80%;
+    height:20%;
+    background-color: white;
+    border:1px solid grey;
+    border-radius:5px;
+    margin-left:10%;
+    margin-bottom:5%;
+    margin-top:5%;
+    display: flex;
+    align-items: center;
+    border-left:4px solid rgb(115, 128, 200);
+}
+.first{
+    margin-top:5%;
+}
+.lekarze-img-holder{
+    width: 90px;
+    height: 90px;
+    margin-left:5%;
+    float:left;
+    border-radius: 50%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image:url('../../../images/sam.jpeg');
+}
+.lekarze-name{
+    margin-left:5%;
+}
