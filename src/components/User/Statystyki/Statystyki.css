@@ -1,0 +1,45 @@
+#lekarze-top-holder{
+    width:100%;
+    height:10%;
+    top:0%;
+    left:0%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom:1px solid grey;
+    clear: both;
+    position: absolute;
+}
+
+.lekarze-subpage-link{
+    height:100%;
+    float:left;
+    width: auto;
+    margin-left:5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor:pointer
+}
+.lekarze-subpage-link:hover{
+    color:rgba(87,114,240,1);
+    border-bottom:3px solid rgba(87,114,240,1);
+}
+#lekarze-left-holder{
+    width:65%;
+    height:80%;
+    float:left;
+    margin-left:0%;
+    background-color:white;
+    margin-top:10%;
+    overflow-y: scroll;
+}
+#lekarze-right-holder{
+    width:25%;
+    height:80%;
+    float:right;
+    margin-left:5%;
+    background-color:lime;
+    margin-top:10%;
+}

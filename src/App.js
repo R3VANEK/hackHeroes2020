@@ -9,7 +9,7 @@ import LoginForm from './components/Form/LoginForm';
 
 import Teleporada from './components/User/Teleporada'
 import Recepty from './components/User/Recepty'
-import Statystyki from './components/User/Statystyki'
+import Statystyki from './components/User/Statystyki/Statystyki'
 import Konto from './components/User/Konto'
 import Lekarze from './components/User/Lekarze/Lekarze'
 
