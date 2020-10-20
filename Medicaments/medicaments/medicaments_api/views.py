@@ -40,10 +40,20 @@ class MedicamentsViewSet(viewsets.ViewSet):
         return Response("Medicaments added succesfuly!")
 
     def put(self, request):
-        pass #todo
+        medicament = Medicaments.objects.filter(id = request.data['medicament_id'])
+        medicament_dates = MedicamentInjectionDate.objects.filter(medicament = medicament)
+        medicament.medicament = request.data['medicament']
+        medicament.injection = request.data['injection']
+        for idx in len(medicament_dates) - 1:
+            current_date = medicament_dates[idx]
+            current_date.hour = request.data['dates'][idx]["hour"]
+            current_date.minute = request.data['dates'][idx]["minute"]
+
+        return Response("Medicament edited succesfuly")
+        
 
 
- delete(self, request):
+    def delete(self, request):
         medicament_id = request.data['medicament_id']
         medicament = Medicament.objects.filter(id = medicament_id)
         medicament.delete()
