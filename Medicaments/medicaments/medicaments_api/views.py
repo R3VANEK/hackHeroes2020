@@ -20,6 +20,7 @@ class MedicamentsViewSet(viewsets.ViewSet):
         serializer = MedicamentSerializer(medicaments, many = True)
         return Response(serializer.data)
 
+
     def post(self, request):
         user_id = request.user.id #Doctor's id
         patient_email = request.data['patient_email']
@@ -39,19 +40,26 @@ class MedicamentsViewSet(viewsets.ViewSet):
 
         return Response("Medicaments added succesfuly!")
 
+
     def put(self, request):
-        medicament = Medicaments.objects.filter(id = request.data['medicament_id'])
+        medicament = Medicament.objects.filter(id = request.data['medicament_id'])[0]
         medicament_dates = MedicamentInjectionDate.objects.filter(medicament = medicament)
         medicament.medicament = request.data['medicament']
         medicament.injection = request.data['injection']
-        for idx in len(medicament_dates) - 1:
-            current_date = medicament_dates[idx]
-            current_date.hour = request.data['dates'][idx]["hour"]
-            current_date.minute = request.data['dates'][idx]["minute"]
+        medicament.save()
+
+        for date in medicament_dates:
+            date.delete()
+        
+        for date in request.data['dates']:
+            new_medicament_date = MedicamentInjectionDate()
+            new_medicament_date.medicament = medicament
+            new_medicament_date.hour = date["hour"]
+            new_medicament_date.minute = date["minute"]
+            new_medicament_date.save()
 
         return Response("Medicament edited succesfuly")
         
-
 
     def delete(self, request):
         medicament_id = request.data['medicament_id']
