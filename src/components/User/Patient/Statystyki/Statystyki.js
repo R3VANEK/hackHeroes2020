@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
-import Calendar from 'react-calendar';
+
 
 import './Statystyki.css'
 import 'react-calendar/dist/Calendar.css';
 
-import MoodIcon from '../../../../icons/mood.svg'
-import TemperatureIcon from '../../../../icons/temperature.svg'
-import MoonIcon from '../../../../icons/moon.svg'
-import HearthIcon from '../../../../icons/hearth.svg'
+import Wykresy from './Wykresy'
+import CurrentData from './CurrentData'
+
+
 
 
 
@@ -15,13 +15,11 @@ import HearthIcon from '../../../../icons/hearth.svg'
 class Statystyki extends Component {
 
     componentDidMount(){
-        document.getElementsByClassName('date-prev-holder')[5].classList.add('active')
+        /*document.getElementsByClassName('date-prev-holder')[5].classList.add('active')*/
     }
 
 
     state = { 
-        shortMonths : ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-        currentDate : new Date(Date.now()),
     
         lastDaysData : [
             { date : new Date(Date.now()), mood : 10, temperature : 36.6, sleep: 8, pulse : 120},
@@ -32,47 +30,15 @@ class Statystyki extends Component {
             { date : new Date(new Date().setDate(new Date().getDate()-5)), mood : 7, temperature : 36.9, sleep: 9, pulse : 90}
         ],
 
-        currentDisplayData : {date : new Date(Date.now()), mood : 10, temperature : 36.6, sleep: 8, pulse : 120}
+        Components : {
+            CurrentData : CurrentData,
+            Wykresy : Wykresy,
+        },
+        whichToDisplay : Wykresy,
     }
 
-    onCalendarChange = (date) => {
-        this.setState({ date })
-    }
-
-    statsChange = (event, parameter) =>{
-        let date = this.state.currentDisplayData.date
-        let copyState = this.state.lastDaysData
-        let index = copyState.findIndex((el)=>{
-            console.log(el.date, date)
-            return el.date.getTime() == date.getTime()
-        })
-        
-        let element = copyState[index]
-        console.log(element)
-        element[parameter] = event.target.value
-        copyState[index] = element
-        let prevCurrent = this.state.currentDisplayData
-        this.setState({lastDaysData : [...copyState]})
-        this.setState({currentDisplayData : {
-                ...prevCurrent,
-                [parameter] : event.target.value
-            }
-        })
-    }
-
-    changeDisplayData = (id) =>{
-        for(let i = 0; i<6;i++){
-            document.getElementsByClassName('date-prev-holder')[i].classList.remove('active')
-        }
-        
-        document.getElementsByClassName('date-prev-holder')[5-id].classList.add('active')
-
-
-        this.setState({
-            currentDisplayData : {
-                ...this.state.lastDaysData[id]
-            }
-        })
+    changeDiv = (Component) =>{
+        this.setState({whichToDisplay : this.state.Components[Component]})
     }
 
 
@@ -82,16 +48,18 @@ class Statystyki extends Component {
         return ( 
             <main>
                 <div id="lekarze-top-holder">
-                    <div class="lekarze-subpage-link">
+                    <div class="lekarze-subpage-link" onClick={()=>{this.changeDiv("CurrentData")}}>
                         Dzisiejsze dane
                     </div>
 
-                    <div class="lekarze-subpage-link">
+                    <div class="lekarze-subpage-link" onClick={()=>{this.changeDiv("Wykresy")}}>
                         Wykresy
                     </div>
                 </div>
 
-                <div id="lekarze-left-holder">
+                {<this.state.whichToDisplay lastDayData={this.state.lastDaysData}/>}
+
+                {/*<div id="lekarze-left-holder">
                         
                     <div id="date-help-holder">
                         <div class="date-prev-holder" onClick={()=>{this.changeDisplayData(5)}}>{this.state.currentDate.getDate()-5}<br/>{this.state.shortMonths[this.state.currentDate.getMonth()]}</div>
@@ -165,7 +133,7 @@ class Statystyki extends Component {
                         <div class="date-reminder-holder">9<br/>Oct</div>
                         <div class="name-reminder-holder">Videochat z dr. Targowskim</div>
                     </div>
-                </div>
+                </div> */}
             </main>
          );
     }

@@ -156,3 +156,52 @@
     background-color: white !important;
     color:blue  !important;
 }
+
+
+
+
+
+#wykresy-holder{
+    width:auto;
+    height:350px;
+    background-color:white;
+    margin-top:15%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-right:10%;
+    padding-top:5%;
+    padding-left:5%;
+    padding-bottom:5%;
+   position: relative; 
+}
+.arrow-holder{
+    position: absolute;
+    height:100%;
+    width:10%;
+    z-index:1;
+    background-color: rgb(255, 255, 255);
+    transition:0.5s ease-in-out;
+    left:0%;
+    color:black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size:4em;
+    cursor: pointer;
+}
+.arrow-holder:hover{
+    background-color: rgba(0, 0, 0, 0.164);
+    color:white
+}
+.second{
+    left:90%;
+}
+#wykresy-parameter-holder{
+    position: absolute;
+    width:30%;
+    height:10%;
+    background-color: #006edc;
+    left:0%;
+    top:-10%;
+}
