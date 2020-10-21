@@ -30,7 +30,7 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    background-image:url('../../../images/sam.jpeg');
+    background-image:url('../../../../images/sam.jpeg');
 }
 .lekarze-name{
     margin-left:5%;

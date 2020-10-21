@@ -1,15 +1,14 @@
 import React, { Component } from 'react';
-import Mainholder from './Mainholder';
 
-class Teleporada extends Component {
+class Recepty extends Component {
     state = {  }
     render() { 
         return ( 
             <main>
-                halo to ja Teleporada
+                halo to ja Recepty
             </main>
          );
     }
 }
  
-export default Teleporada;
+export default Recepty;

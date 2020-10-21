@@ -1,15 +1,13 @@
 import React, { Component } from 'react';
-
-import Mainholder from '../Mainholder';
 import Calendar from 'react-calendar';
 
 import './Statystyki.css'
 import 'react-calendar/dist/Calendar.css';
 
-import MoodIcon from '../../../icons/mood.svg'
-import TemperatureIcon from '../../../icons/temperature.svg'
-import MoonIcon from '../../../icons/moon.svg'
-import HearthIcon from '../../../icons/hearth.svg'
+import MoodIcon from '../../../../icons/mood.svg'
+import TemperatureIcon from '../../../../icons/temperature.svg'
+import MoonIcon from '../../../../icons/moon.svg'
+import HearthIcon from '../../../../icons/hearth.svg'
 
 
 

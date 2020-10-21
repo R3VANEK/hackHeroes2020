@@ -1,15 +1,14 @@
 import React, { Component } from 'react';
-import Mainholder from './Mainholder';
 
-class Recepty extends Component {
+class KontoPatient extends Component {
     state = {  }
     render() { 
         return ( 
             <main>
-                halo to ja Recepty
+                halo to ja Konto
             </main>
          );
     }
 }
  
-export default Recepty;
+export default KontoPatient;

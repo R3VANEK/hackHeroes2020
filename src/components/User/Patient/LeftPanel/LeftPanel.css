@@ -50,7 +50,7 @@ box-shadow: 2px 3px 12px -6px rgba(0,0,0,0.75);
     background-position: center;
     background-repeat: no-repeat;
   background-size: cover;
-  background-image:url('../../images/sam.jpeg');
+  background-image:url('../../../../images/sam.jpeg');
   float:left;
 }
 .aside-doctor-user-name{

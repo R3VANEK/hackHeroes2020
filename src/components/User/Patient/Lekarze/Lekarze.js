@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import Mainholder from '../Mainholder';
 import './Lekarze.css'
 
-import profPicture from '../../../images/sam.jpeg'
+import profPicture from '../../../../images/sam.jpeg'
 
 class Lekarze extends Component {
 

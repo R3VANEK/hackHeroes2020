@@ -3,15 +3,11 @@ import {Switch, Route, BrowserRouter} from 'react-router-dom';
 import './App.css';
 
 
-import Mainholder from './components/User/Mainholder';
+import Mainholder from './components/User/Shared/Mainholder';
 import RegisterForm from './components/Form/RegisterForm';
 import LoginForm from './components/Form/LoginForm';
 
-import Teleporada from './components/User/Teleporada'
-import Recepty from './components/User/Recepty'
-import Statystyki from './components/User/Statystyki/Statystyki'
-import Konto from './components/User/Konto'
-import Lekarze from './components/User/Lekarze/Lekarze'
+
 
 function App() {
   return (
@@ -21,11 +17,30 @@ function App() {
         <Route path="/register" component={RegisterForm}/>
         <Route path="/login" component={LoginForm}/>
 
-        <Route path="/teleporada" component={Mainholder(Teleporada)}/>
-        <Route path="/recepty" component={Mainholder(Recepty)}/>
-        <Route path="/statystyki" component={Mainholder(Statystyki)}/>
-        <Route path="/konto" component={Mainholder(Konto)}/>
-        <Route path="/lekarze" component={Mainholder(Lekarze)}/>
+        <Route path="/teleporada" 
+          render={(props) => (
+            <Mainholder path={"Teleporada"} role={"patient"} />
+        )}/>
+
+        <Route path="/recepty" 
+          render={(props) => (
+            <Mainholder path={"Recepty"} role={"patient"} />
+        )}/>
+
+        <Route path="/statystyki" 
+          render={(props) => (
+            <Mainholder path={"Statystyki"} role={"patient"} />
+        )}/>
+
+        <Route path="/konto" 
+            render={(props) => (
+              <Mainholder path={"Konto"} role={"patient"} />
+          )}/>
+
+        <Route path="/lekarze" 
+          render={(props) => (
+            <Mainholder path={"Lekarze"} role={"patient"} />
+        )}/>
         
       </Switch>
     </BrowserRouter>

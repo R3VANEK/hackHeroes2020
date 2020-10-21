@@ -2,15 +2,15 @@ import React from 'react'
 import {NavLink} from 'react-router-dom'
 import './LeftPanel.css'
 
-import videoIcon from '../../icons/video-white.svg';
-import receiptIcon from '../../icons/receipt-white.svg';
-import graphIcon from '../../icons/graph-white.svg';
-import accountIcon from '../../icons/account-white.svg';
-import doctorIcon from '../../icons/doctor-white.svg';
+import videoIcon from '../../../../icons/video-white.svg';
+import receiptIcon from '../../../../icons/receipt-white.svg';
+import graphIcon from '../../../../icons/graph-white.svg';
+import accountIcon from '../../../../icons/account-white.svg';
+import doctorIcon from '../../../../icons/doctor-white.svg';
 
 
 
-const LeftPanel = () =>{
+const LeftPanelPatient = () =>{
 
     
 
@@ -74,4 +74,4 @@ const LeftPanel = () =>{
     )
 }
 
-export default LeftPanel 
+export default LeftPanelPatient
