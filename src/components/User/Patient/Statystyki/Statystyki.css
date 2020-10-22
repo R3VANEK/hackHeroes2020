@@ -204,4 +204,20 @@
     background-color: #006edc;
     left:0%;
     top:-10%;
+    color:white;
+    font-size:1.3em;
+}
+#wykresy-parameter-holder p{
+    color:white;
+    float:left;
+    padding-bottom:50px;
+}
+#wykresy-parameter-holder img{
+    float:left;
+    height:100%;
+}
+.customToolTip{
+    background-color:white;
+    border:1px solid rgb(184, 184, 184);
+    padding:10px;
 }
