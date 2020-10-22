@@ -24,7 +24,8 @@ class RegisterForm extends Component {
         checkPassword : '',
         phoneNumber : '',
         emailAddres : '',
-
+        homeCity : '',
+        specialization : '',
         errorMessage : ''
      }
 
@@ -60,6 +61,8 @@ class RegisterForm extends Component {
 
     render() { 
 
+        let additionalInputs = (this.state.role == 'Doktor') ? <div><input type="text" placeholder="Miasto" name="homeCity" class="register-inputs" onChange={this.handleChange}/>
+        <input type="text" placeholder="Specializacja" name="specialization" class="register-inputs" onChange={this.handleChange}/></div> : null
         
 
         return ( 
@@ -113,6 +116,8 @@ class RegisterForm extends Component {
                     <div class="section-inputs">
                         <input type="text" placeholder="Telefon" name="phoneNumber" class="register-inputs" onChange={this.handleChange}/>
                         <input type="email" placeholder="Email" name="emailAddres" class="register-inputs" onChange={this.handleChange}/>
+
+                        {additionalInputs}
                         <input type="submit" value="Zarejestruj się" id="register-button"/>
 
                         <p id="error-p">{this.state.errorMessage}</p>
