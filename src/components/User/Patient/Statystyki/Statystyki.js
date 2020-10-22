@@ -29,6 +29,7 @@ class Statystyki extends Component {
             { date : new Date(new Date().setDate(new Date().getDate()-4)), mood : 6, temperature : 37.2, sleep: 8, pulse : 120},
             { date : new Date(new Date().setDate(new Date().getDate()-5)), mood : 7, temperature : 36.9, sleep: 9, pulse : 90}
         ],
+        currentDisplayData : {date : new Date(Date.now()), mood : 10, temperature : 36.6, sleep: 8, pulse : 120},
 
         Components : {
             CurrentData : CurrentData,
@@ -57,7 +58,7 @@ class Statystyki extends Component {
                     </div>
                 </div>
 
-                {<this.state.whichToDisplay lastDayData={this.state.lastDaysData}/>}
+                {<this.state.whichToDisplay lastDayData={this.state.lastDaysData} currentDisplayData={this.state.currentDisplayData}/>}
 
                 {/*<div id="lekarze-left-holder">
                         

@@ -11,13 +11,14 @@ class CurrentData extends React.Component {
     componentDidMount(){
         document.getElementsByClassName('date-prev-holder')[5].classList.add('activeStats')
         this.setState({
-            lastDaysData : this.props.lastDayData
+            lastDaysData : this.props.lastDayData,
+            currentDisplayData : this.props.currentDisplayData
         })
     }
 
     state = { 
         shortMonths : ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-        currentDisplayData : {date : new Date(Date.now()), mood : 10, temperature : 36.6, sleep: 8, pulse : 120},
+        currentDisplayData :[],
         currentDate : new Date(Date.now()),
         lastDaysData : []
     }
@@ -44,11 +45,12 @@ class CurrentData extends React.Component {
     statsChange = (event, parameter) =>{
         let date = this.state.currentDisplayData.date
         let copyState = this.state.lastDaysData
+        console.log(copyState[0].date, new Date(Date.now()))
         let index = copyState.findIndex((el)=>{
-            console.log(el.date, date)
-            return el.date.getTime() == date.getTime()
+            console.log(el.date.getTime(), date.getTime())
+            return el.date.getTime() === date.getTime()
         })
-        
+        console.log(copyState, index)
         let element = copyState[index]
         console.log(element)
         element[parameter] = event.target.value
