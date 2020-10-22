@@ -1,7 +1,7 @@
-# hackHeroes2020
+# hackHeroes2020 - UserAPI
 
 ## API Overview
-```bash
+```
 GET /help   - api overview
 
 GET /all    - get all users
