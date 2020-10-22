@@ -66,3 +66,7 @@ box-shadow: 2px 3px 12px -6px rgba(0,0,0,0.75);
     text-decoration: none;
     color:white;
 }
+a:-webkit-any-link {
+    color:white;
+    text-decoration: none;
+}

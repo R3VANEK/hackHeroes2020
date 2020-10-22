@@ -34,7 +34,7 @@ class Statystyki extends Component {
             CurrentData : CurrentData,
             Wykresy : Wykresy,
         },
-        whichToDisplay : Wykresy,
+        whichToDisplay : CurrentData,
     }
 
     changeDiv = (Component) =>{

@@ -9,7 +9,7 @@ import HearthIcon from '../../../../icons/hearth.svg'
 class CurrentData extends React.Component {
 
     componentDidMount(){
-        document.getElementsByClassName('date-prev-holder')[5].classList.add('active')
+        document.getElementsByClassName('date-prev-holder')[5].classList.add('activeStats')
         this.setState({
             lastDaysData : this.props.lastDayData
         })
@@ -25,9 +25,9 @@ class CurrentData extends React.Component {
 
     changeDisplayData = (id) =>{
         for(let i = 0; i<6;i++){
-            document.getElementsByClassName('date-prev-holder')[i].classList.remove('active')
+            document.getElementsByClassName('date-prev-holder')[i].classList.remove('activeStats')
         }
-        document.getElementsByClassName('date-prev-holder')[5-id].classList.add('active')
+        document.getElementsByClassName('date-prev-holder')[5-id].classList.add('activeStats')
 
         
         this.setState({

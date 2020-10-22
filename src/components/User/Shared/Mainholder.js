@@ -10,6 +10,8 @@ import StatystykiPatient from '../Patient/Statystyki/Statystyki'
 import KontoPatient from '../Patient/Konto/Konto'
 import LekarzePatient from '../Patient/Lekarze/Lekarze'
 
+import Welcome from '../Shared/Welcome'
+
 
 
 const Mainholder = ({path, role}) =>{
@@ -19,12 +21,16 @@ const Mainholder = ({path, role}) =>{
         ReceptyPatient : ReceptyPatient,
         StatystykiPatient : StatystykiPatient,
         KontoPatient : KontoPatient,
-        LekarzePatient : LekarzePatient
+        LekarzePatient : LekarzePatient,
+
+        Welcome : Welcome
 
     }
 
     if(role == "patient"){
-        let Component = components[path+"Patient"]
+        console.log(path)
+        let Component = (path != "Welcome") ? components[path+"Patient"] : components[path]
+        console.log(Component)
         return(
             <div>
                 <Navbar/>
