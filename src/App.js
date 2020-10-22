@@ -42,7 +42,12 @@ class  App extends React.Component {
           <Route path="/konto" 
               render={(props) => (
                 <Mainholder path={"Konto"} role={this.state.role} />
-            )}/>
+          )}/>
+
+          <Route path="/zaufaniLekarze" 
+              render={(props) => (
+                <Mainholder path={"Zaufani"} role={this.state.role} />
+            )}/>  
   
           <Route path="/lekarze" 
             render={(props) => (

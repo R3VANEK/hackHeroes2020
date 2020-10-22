@@ -50,6 +50,12 @@ const LeftPanelPatient = () =>{
                     <img src={doctorIcon} class="option-img"/> Dostępni lekarze
                 </div>
             </NavLink>
+
+            <NavLink to="/zaufaniLekarze" class="nav-links">
+                <div class="aside-option-div">
+                    <img src={doctorIcon} class="option-img"/> Zaufani lekarze
+                </div>
+            </NavLink>
             
 
             <p class="aside-title-span">Ostatnie spotkania</p>
@@ -64,10 +70,6 @@ const LeftPanelPatient = () =>{
                 <p className="aside-doctor-user-name">Dr Johny Sins</p>   
             </div>
 
-            <div class="aside-last-call-holder">
-                <div className="aside-doctor-picture-holder"></div>
-                <p className="aside-doctor-user-name">Dr Dree</p>   
-            </div>
 
 
         </aside>
