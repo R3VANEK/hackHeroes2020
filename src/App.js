@@ -13,7 +13,7 @@ class  App extends React.Component {
 
 
   state = {
-    role : "patient"
+    role : "doctor"
   }
 
   render(){
@@ -34,6 +34,11 @@ class  App extends React.Component {
           <Route path="/recepty" 
             render={(props) => (
               <Mainholder path={"Recepty"} role={this.state.role} />
+          )}/>
+
+          <Route path="/dodajRecepte" 
+            render={(props) => (
+              <Mainholder path={"DodajRecepte"} role={this.state.role} />
           )}/>
   
           <Route path="/statystyki" 

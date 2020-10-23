@@ -10,11 +10,13 @@ import StatystykiPatient from '../Patient/Statystyki/Statystyki'
 import KontoPatient from '../Patient/Konto/Konto'
 import LekarzePatient from '../Patient/Lekarze/Lekarze'
 import ZaufaniPatient from '../Patient/ZaufaniLekarze/Zaufani'
+
 import TeleporadaDoctor from '../Doctor/Teleporada/Teleporada'
 import ReceptyDoctor from '../Doctor/Recepty/Recepty'
 import StatystykiDoctor from '../Doctor/Statystyki/Statystyki'
 import KontoDoctor from '../Doctor/Konto/Konto'
 import LeftPanelDoctor from '../Doctor/LeftPanel/LeftPanel'
+import DodajRecepteDoctor from '../Doctor/DodajRecepte/DodajRecepte'
 
 import Welcome from '../Shared/Welcome'
 
@@ -23,25 +25,25 @@ import Welcome from '../Shared/Welcome'
 const Mainholder = ({path, role}) =>{
 
     const components = {
-        TeleporadaPatient : TeleporadaPatient,
-        ReceptyPatient : ReceptyPatient,
-        StatystykiPatient : StatystykiPatient,
-        KontoPatient : KontoPatient,
-        LekarzePatient : LekarzePatient,
-        ZaufaniPatient : ZaufaniPatient,
-        TeleporadaDoctor : TeleporadaDoctor,
-        ReceptyDoctor : ReceptyDoctor,
-        StatystykiDoctor : StatystykiDoctor,
-        KontoDoctor : KontoDoctor,
+        
+        
 
-        Welcome : Welcome
+        
 
     }
 
     if(role == "patient"){
-        console.log(path)
+
+        const components = {
+            TeleporadaPatient : TeleporadaPatient,
+            ReceptyPatient : ReceptyPatient,
+            StatystykiPatient : StatystykiPatient,
+            KontoPatient : KontoPatient,
+            LekarzePatient : LekarzePatient,
+            ZaufaniPatient : ZaufaniPatient,
+            Welcome : Welcome
+        }
         let Component = (path != "Welcome") ? components[path+"Patient"] : components[path]
-        console.log(Component)
         return(
             <div>
                 <Navbar/>
@@ -54,7 +56,16 @@ const Mainholder = ({path, role}) =>{
 
     //lekarz
     else{
-        let Component = components[path+"Doctor"]
+
+        const components = {
+            TeleporadaDoctor : TeleporadaDoctor,
+            ReceptyDoctor : ReceptyDoctor,
+            StatystykiDoctor : StatystykiDoctor,
+            KontoDoctor : KontoDoctor,
+            DodajRecepteDoctor : DodajRecepteDoctor,
+            Welcome : Welcome
+        }
+        let Component = (path != "Welcome") ? components[path+"Doctor"] : components[path]
         return(
             
             <div>

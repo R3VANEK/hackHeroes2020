@@ -30,6 +30,12 @@ const LeftPanelDoctor = () =>{
                     <img src={receiptIcon} class="option-img"/> Wypisane recepty
                 </div>
             </NavLink>
+
+            <NavLink to="/dodajRecepte" class="nav-links">
+                <div class="aside-option-div">
+                    <img src={receiptIcon} class="option-img"/> Dodaj receptę
+                </div>
+            </NavLink>
             
 
             <NavLink to="/statystyki" class="nav-links">
