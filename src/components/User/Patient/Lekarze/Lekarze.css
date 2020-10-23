@@ -6,6 +6,7 @@
     margin-top:5%;
 }
 .lekarz-holder{
+    position: relative;
     width:80%;
     height:20%;
     background-color: white;
@@ -34,4 +35,75 @@
 }
 .lekarze-name{
     margin-left:5%;
+}
+
+
+
+#zaufaniLekarze-description-holder{
+    width:80%;
+    height:20%;
+    margin-left:10%;
+    margin-top:5%;
+    color:grey;
+    text-align: center;
+    font-size:1.2em;
+
+}
+.zaufaniLekarze-delete-holder{
+    width:50px;
+    height:50px;
+    position: absolute;
+    top:25%;
+    right:2%;
+    background-color:rgb(255, 92, 92);
+    border-radius:50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor:pointer;
+    transition: 0.3s ease-in-out;
+
+}
+.zaufaniLekarze-delete-holder:hover{
+    background-color:rgb(255, 44, 44);
+}
+.zaufaniLekarze-delete-img{
+    width:50%;
+}
+
+#ZaufaniLekarze-delete-flying-holder{
+    position: fixed;
+    width:40%;
+    left:30%;
+    height:50%;
+    top:25%;
+    z-index:9999999;
+    background-color: white;
+    text-align: center;
+    font-size:1.3em;
+    display: none;
+}
+#ZaufaniLekarze-delete-flying-holder p {
+    margin-top:15%;
+    padding:10px;
+}
+#ZaufaniLekarze-delete-top-holder{
+    width:100%;
+    height:10%;
+    background-color: rgb(94, 177, 255);
+}
+
+.ZaufaniLekarze-button{
+    float:right;
+    width:25%;
+    height:15%;
+    background-color: white;
+    margin-right:5%;
+    margin-top:15%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    border-radius:15px;
+    border:2px solid rgb(206, 206, 206);
+    cursor:pointer;
 }

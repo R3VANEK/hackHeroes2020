@@ -9,3 +9,14 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+.blur{
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  z-index:99999;
+  background-color:rgba(0, 0, 0, 0.438);
+  display:none;
+}
+.activeBlur{
+  display:block;
+}

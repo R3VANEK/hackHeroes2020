@@ -20,6 +20,8 @@ class  App extends React.Component {
     return (
       <BrowserRouter>
         <Switch>
+
+          
           
           <Route path="/register" component={RegisterForm}/>
           <Route path="/login" component={LoginForm}/>
