@@ -10,6 +10,11 @@ import StatystykiPatient from '../Patient/Statystyki/Statystyki'
 import KontoPatient from '../Patient/Konto/Konto'
 import LekarzePatient from '../Patient/Lekarze/Lekarze'
 import ZaufaniPatient from '../Patient/ZaufaniLekarze/Zaufani'
+import TeleporadaDoctor from '../Doctor/Teleporada/Teleporada'
+import ReceptyDoctor from '../Doctor/Recepty/Recepty'
+import StatystykiDoctor from '../Doctor/Statystyki/Statystyki'
+import KontoDoctor from '../Doctor/Konto/Konto'
+import LeftPanelDoctor from '../Doctor/LeftPanel/LeftPanel'
 
 import Welcome from '../Shared/Welcome'
 
@@ -27,7 +32,7 @@ const Mainholder = ({path, role}) =>{
         TeleporadaDoctor : TeleporadaDoctor,
         ReceptyDoctor : ReceptyDoctor,
         StatystykiDoctor : StatystykiDoctor,
-        KontoDoctor : KontoDoctor
+        KontoDoctor : KontoDoctor,
 
         Welcome : Welcome
 
