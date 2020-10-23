@@ -1,0 +1,42 @@
+#dodajRecepte-holder{
+    width: 80%;
+    height: 80%;
+    background-color: white;
+    margin-top: 5%;
+    border-radius:10px;
+    border-left:10px solid rgb(58, 133, 255);
+}
+.bigger-img{
+    width:80px !important;
+    height:80px !important;
+}
+.dodaj-recepte-input{
+    margin-left: 1%;
+    width:80%;
+    line-height:2;
+    padding:10px;
+    font-size:1.2em;
+    margin-top:5%;
+}
+.down-holder{
+    width:50%;
+    height:70%;
+    float:left;
+}
+#godziny-podania{
+    font-size:1.2em;
+}
+#dodaj-recepte-submit-button{
+    width:50%;
+    height:20%;
+    margin-left:20%;
+    margin-top:20%;
+    background-color:rgb(130, 199, 98);
+    display:flex;
+    justify-content: center;
+    color:white;
+    border-radius:10px;
+    align-items: center;
+    font-size:1.3em;
+    cursor:pointer
+}
