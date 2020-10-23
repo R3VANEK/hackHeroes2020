@@ -24,6 +24,10 @@ const Mainholder = ({path, role}) =>{
         KontoPatient : KontoPatient,
         LekarzePatient : LekarzePatient,
         ZaufaniPatient : ZaufaniPatient,
+        TeleporadaDoctor : TeleporadaDoctor,
+        ReceptyDoctor : ReceptyDoctor,
+        StatystykiDoctor : StatystykiDoctor,
+        KontoDoctor : KontoDoctor
 
         Welcome : Welcome
 
@@ -45,10 +49,13 @@ const Mainholder = ({path, role}) =>{
 
     //lekarz
     else{
+        let Component = components[path+"Doctor"]
         return(
-            //ułóż to podobne jak powyżej i będzie działać :)
+            
             <div>
-               <Navbar/> 
+               <Navbar/>
+               <LeftPanelDoctor/>
+               <Component/>
             </div>
         )
     }
