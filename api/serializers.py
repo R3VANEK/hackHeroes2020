@@ -5,4 +5,4 @@ from .models import UserData
 class UserDataSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserData
-        fields = ['ownerID', 'mood', 'temperature', 'sleepTime', 'pulse']
+        fields = ['id','ownerID', 'mood', 'temperature', 'sleepTime', 'pulse']

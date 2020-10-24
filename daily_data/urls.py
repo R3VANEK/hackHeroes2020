@@ -21,7 +21,8 @@ from api import views
 urlpatterns = [
     path('admin/', admin.site.urls),
 
-    path('<int:pk>', views.UserDataView.as_view(), name="userData"),
-    path('/add', views.addData, name="userDataAdd"),
-    path('/help', views.apiOverview, name="help"),
+    path('all', views.showAll),     # GET
+    path('add', views.addUserData), # POST
+    path('getByUser/<int:pk>', views.getUserData), # GET
+    path('<int:pk>', views.UserDataView.as_view()), # PUT/DELETE
 ]
