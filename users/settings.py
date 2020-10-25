@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 from pathlib import Path
+from datetime import timedelta
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,7 +21,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'vz^^(ur@oui!ek7=t7$))e!p1(i(10gy774i%#df++oqvb0x6c'
+SECRET_KEY = 'c*w%xpheysgta$0h)m^2he$$1bd3m_so2rwq_#wiif%!l4#i-3'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -37,12 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
-    # REST Framework
     'rest_framework',
-
-    # My app
-    'api.apps.ApiConfig',
+    'api'
 ]
 
 MIDDLEWARE = [
@@ -81,8 +78,14 @@ WSGI_APPLICATION = 'users.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'djongo',
+        'CLIENT': {
+            'host': 'mongodb+srv://500PlusClient:SecretsOfVatican1978@cluster0-1kawz.azure.mongodb.net/test?retryWrites=true&w=majority',
+            'username': '500PlusClient',
+            'password': 'SecretsOfVatican1978',
+            'authMechanism': 'SCRAM-SHA-1',
+            'name':'Healfy',
+        }
     }
 }
 
