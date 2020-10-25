@@ -4,5 +4,5 @@ from appointments_api.views import AppointmentViewSet
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('appointments/', AppointmentViewSet.as_view({'get': 'get'}))
+    path('appointments/', AppointmentViewSet.as_view({'get': 'get', 'post': 'post', 'put': 'put', 'delete': 'delete'}))
 ]
