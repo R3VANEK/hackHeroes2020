@@ -1,86 +1,109 @@
-from django.shortcuts import render
-from django.http import JsonResponse, Http404
-
-# REST Framework imports
-from rest_framework.decorators import api_view
+from django.shortcuts import get_object_or_404
+from django.contrib.auth.models import User, Group
+from django.contrib.auth import authenticate
+from .models import AdditionalData
+from rest_framework import viewsets, permissions
 from rest_framework.response import Response
-from rest_framework.views import APIView
-# from rest_framework import status
-
-# My files import
-from .serializers import *
-from .models import *
+from rest_framework.decorators import api_view
+from .serializers import UserSerializer, AdditionalDataSerializer
 
 
-@api_view(['GET'])
-def apiOverview(request):
-    return Response([
-        {
-            'GET': '',
-            'POST': '',
-        },
-        {
-            'GET': '/:id',
-            'PUT': '/:id',
-            'DELETE': '/:id',
-        },
-        {
-            'GET': '/all'
-        }
-    ])
-    
+class UserViewSet(viewsets.ViewSet):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
 
-
-@api_view(['GET'])
-def getAllUsers(request):
-    users = User.objects.all()
-    serializer = UserSerializer(users, many=True)
-    return Response(serializer.data)
-
-
-class UserView(APIView):
-    def get(self, request, format=None):
-        #
-        #
-        #
-        return Response({'siema': 'dziala'})
-
-    def post(self, request, format=None):
-        serializer = UserSerializer(data=request.data)
-
-        if serializer.is_valid():
-            serializer.save()
-            return Response("User created")
-        return Response("Request error")
-
-
-class SpecUserView(APIView):
-    def getUser(self, pk):
+    def get(self, request):
         try:
-            return User.objects.get(id=pk)
-        except User.DoesNotExist:
-            raise Http404
+            email = request.data['email']
+            password = request.data['password']
+            authenticated_user = authenticate(username=email, password=password)
+            if authenticated_user is not None:
+                authenticated_user.additional_data = AdditionalData.objects.filter(user=authenticated_user)
+                serialized_user = UserSerializer(authenticated_user)
+                return Response(serialized_user.data)
+            else:
+                return Response("Wrong email or password")
+        except KeyError:
+            return Response("Not all data was provided")
+        except IndexError:
+            return Response("This user does not have an additional data")
 
-    def get(self, request, pk, format=None):
-        user = self.getUser(pk)
-        serializer = UserSerializer(user, many=False)
-        return Response(serializer.data)
+    def post(self, request):
+        new_user = User.objects.create_user(
+            username=request.data['email'],
+            email=request.data['email'],
+            password=request.data['password'],
+            first_name=request.data['firstName'],
+            last_name=request.data['lastName'])
 
-    def put(self, request, pk, format=None):
-        user = self.getUser(pk)
-        serializer = UserSerializer(instance=user, data=request.data)
+        new_user.groups.add(Group.objects.filter(name = request.data['role'])[0])
 
-        if serializer.is_valid():
-            serializer.save()
-            return Response("User updated")
-        return Response("Request error")
+        if request.data['role'] == "doctor":
+            additional_data = AdditionalData(
+                user = new_user,
+                birthday=request.data['birthday'],
+                phone_number=request.data['phoneNumber'],
+                city = request.data['city'],
+                specialization = request.data['specialization'],
+                positive_rates=0,
+                negative_rates=0 
+            ).save()
 
-    def delete(self, request, pk, format=None):
-        user = self.getUser(pk)
-        user.delete()
-        return Response('User succesesfully delete')
+            new_user.additional_data = additional_data
+            serialized_user = UserSerializer(new_user, context={'request': request})
+
+            return Response(serialized_user.data)
+
+        else:
+            additional_data = AdditionalData(
+                user = new_user,
+                birthday=request.data['birthday'],
+                phone_number=request.data['phoneNumber'],
+            ).save()
+
+            new_user.additional_data = additional_data
+            serialized_user = UserSerializer(new_user, context={'request': request})
+
+            return Response(serialized_user.data)
+
+    def put(self, request):
+        try:
+            user = User.objects.filter(id=request.data['user_id'])[0]
+            additional_data = AdditionalData.objects.filter(user=user)[0]
+            user.email = request.data['email']
+            user.first_name = request.data['firstName']
+            user.last_name = request.data['lastName']
+            additional_data.birthday = request.data['birthday']
+            additional_data.phone_number = request.data['phoneNumber']
+            if user.groups.filter(name='doctor'):
+                additional_data.city = request.data['city']
+                additional_data.specialization = request.data['specialization']
+
+            user.save()
+            additional_data.save()
+            
+            return Response("User edited successfully")
+        except KeyError:
+            return Response("Not all data were provided")
+        except IndexError:
+            return Response("Incorrect user")
 
 
 
-userView = UserView()
-specUserView = SpecUserView()
+    def delete(self, request):
+        user = User.objects.filter(id=request.data['user_id'])[0]
+        password = request.data['password']
+        authenticated_user = authenticate(username=user.email, password=password)
+        if authenticated_user is not None:
+            authenticated_user.delete()
+            return Response("User deleted successfully")
+        else:
+            return Response("Password is incorrect")
+
+@api_view(['GET'])           
+def get_all_doctors(request):
+  doctors = User.objects.filter(groups__name__in=['doctor'])
+  for doctor in doctors:
+    doctor.additional_data = AdditionalData.objects.filter(user = doctor)
+  serializer = UserSerializer(doctors, many = True)
+  return Response(serializer.data)
