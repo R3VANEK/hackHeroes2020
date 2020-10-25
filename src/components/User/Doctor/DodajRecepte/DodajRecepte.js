@@ -12,6 +12,29 @@ class DodajRecepte extends React.Component{
         }]
     }
 
+    addRecipe = (event) => {
+        fetch('http://51.68.136.252:7000/medicaments/' , {
+            method: 'POST',
+            mode: 'cors',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body : JSON.stringify({
+                    "user_id":localStorage.getItem('user_id'),
+                    "patient_email":this.state.email,
+                    "medicaments": [
+                        {"medicament":this.state.dataToTransfer[0].name, "injection":this.state.dataToTransfer[0].injection, "dates": [
+                            {"hour":this.state.dataToTransfer[0].dates[0].hour, "minute":this.state.dataToTransfer[0].dates[0].minute}
+                        ]}
+                    ]
+                
+            }),
+        }).then(response => response.json())
+          .then(data => {
+           return alert("Poprawnie dodano nową receptę!")
+        })
+    }
+
     handleChange = (event) =>{
         let parameter = event.target.name
 
@@ -60,7 +83,7 @@ class DodajRecepte extends React.Component{
                         <input type="text" name="hour" class="dodaj-recepte-input" placeholder="Godzina podania leku" onChange={this.handleChange}/>
                         <input type="text" name="minute" class="dodaj-recepte-input" placeholder="Minuty podania leku" onChange={this.handleChange}/><br/>
 
-                        <div id="dodaj-recepte-submit-button">Wypisz</div>
+                        <div id="dodaj-recepte-submit-button" onClick={this.addRecipe}>Wypisz</div>
                     </div>
                     
                 </div>

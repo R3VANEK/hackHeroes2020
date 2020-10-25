@@ -38,13 +38,6 @@ const LeftPanelDoctor = () =>{
             </NavLink>
             
 
-            <NavLink to="/statystyki" class="nav-links">
-                <div class="aside-option-div">
-                    <img src={graphIcon} class="option-img"/> Statystyki pacjentów
-                </div>
-            </NavLink>
-            
-
             <NavLink to="/konto" class="nav-links">
                 <div class="aside-option-div">
                     <img src={accountIcon} class="option-img"/> Twoje konto

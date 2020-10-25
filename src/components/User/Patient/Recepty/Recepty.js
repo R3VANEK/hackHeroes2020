@@ -5,16 +5,38 @@ import SingleRecept from './SingleRecept'
 
 class Recepty extends Component {
     state = { 
-
+        
         recepty : [
-            { type : 'Rutinoscorbin', injection : '500mg', doctor : 'Jan Kowalski', hours : '18', minutes : '30'},
-            { type : 'Paracetamol', injection : '1 łyżka', doctor : 'Mikołaj Kowalski', hours : '12', minutes : '10'},
-            { type : 'Berberil', injection : '500mg', doctor : 'Agata Ukońska', hours : '11', minutes : '30'},
+
         ]
 
      }
-    render() { 
 
+    componentDidMount () {
+        fetch(`http://51.68.136.252:7000/medicaments/?user_id=${localStorage.getItem('user_id')}` , {
+            method: 'GET',
+            mode: 'cors',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+        }).then(response => response.json())
+          .then(data => {
+            let items = []
+            data.forEach(item =>{
+                items.push({
+                    type: item['medicament'],
+                    injection: item['injection'],
+                    doctor: item['doctor']['first_name'] + " " + item['doctor']['last_name'],
+                    hours: item['medicament_date'][0]['hour'],
+                    minutes: item['medicament_date'][0]['minute']
+                })
+            })
+            this.setState({recepty: items})
+        })
+    }
+
+
+    render() { 
         let receptyDivs = this.state.recepty.map((recepta)=>{
             return <SingleRecept recepta={recepta}/>
         })

@@ -16,8 +16,13 @@ class RegisterForm extends Component {
         this.patientRef.current.style.color = '#5772f0'
     }
 
+    redirectHome(){
+        return this.props.history.push('/welcome')
+    }
+
+
     state = { 
-        role : 'Pacjent',
+        role : '',
         firstName : '',
         lastName : '',
         password : '',
@@ -26,7 +31,7 @@ class RegisterForm extends Component {
         emailAddres : '',
         homeCity : '',
         specialization : '',
-        errorMessage : ''
+        errorMessage : '',
      }
 
      handleChange = (event) =>{
@@ -36,6 +41,61 @@ class RegisterForm extends Component {
          })
      }
 
+     register = (event) => {
+        if(this.state.checkPassword === this.state.password) {
+            if(this.state.role == "Doktor") {
+                fetch('http://51.68.136.252:8000/user/' , {
+                    method: 'POST',
+                    mode: 'cors',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body : JSON.stringify({
+                        email: this.state.emailAddres,
+                        firstName: this.state.firstName,
+                        lastName: this.state.lastName,
+                        phoneNumber: this.state.phoneNumber,
+                        city: this.state.homeCity,
+                        specialization: this.state.specialization,
+                        password: this.state.password,
+                        role: "doctor"
+                    }),
+                }).then(response => response.json())
+                  .then(data => {
+                    localStorage.setItem('user_id', data['id'])
+                    localStorage.setItem('role', data['groups'][0]['name'])
+                    localStorage.setItem('firstName', data['first_name'])
+                    localStorage.setItem('lastName', data['last_name'])
+                    return this.redirectHome();
+                })
+        } else {
+            fetch('http://51.68.136.252:8000/user/' , {
+                method: 'POST',
+                mode: 'cors',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body : JSON.stringify({
+                    "email": this.state.emailAddres,
+                    "firstName": this.state.firstName,
+                    "lastName": this.state.lastName,
+                    "phoneNumber": this.state.phoneNumber,
+                    "city": "",
+                    "specialization": "",
+                    "password": this.state.password,
+                    "role": "patient"
+                }),
+            }).then(response => response.json())
+              .then(data => {
+                localStorage.setItem('user_id', data['id'])
+                localStorage.setItem('role', data['groups'][0]['name'])
+                localStorage.setItem('firstName', data['first_name'])
+                localStorage.setItem('lastName', data['last_name'])
+                return this.redirectHome();
+            })
+        }
+     }
+    }
 
      changeRole = (id) =>{
             if(id == 0){
@@ -62,9 +122,8 @@ class RegisterForm extends Component {
     render() { 
 
         let additionalInputs = (this.state.role == 'Doktor') ? <div><input type="text" placeholder="Miasto" name="homeCity" class="register-inputs" onChange={this.handleChange}/>
-        <input type="text" placeholder="Specializacja" name="specialization" class="register-inputs" onChange={this.handleChange}/></div> : null
+        <input type="text" placeholder="Specjalizacja" name="specialization" class="register-inputs" onChange={this.handleChange}/></div> : null
         
-
         return ( 
             <div id="formPage">
                 
@@ -101,9 +160,7 @@ class RegisterForm extends Component {
                         </div>
                     </div>
 
-                    
-                    <form>
-                
+
                     <div id="help-holder">
                         <p id="register-as">Zarejestruj się jako {this.state.role}</p>
                     </div>
@@ -118,15 +175,12 @@ class RegisterForm extends Component {
                         <input type="email" placeholder="Email" name="emailAddres" class="register-inputs" onChange={this.handleChange}/>
 
                         {additionalInputs}
-                        <input type="submit" value="Zarejestruj się" id="register-button"/>
+                        <button type="submit" id="register-button" onClick={this.register} >Zarejestruj się</button>
 
                         <p id="error-p">{this.state.errorMessage}</p>
                     </div>
 
-                    </form>
                     
-
-
                 </section>
             </div>
          );

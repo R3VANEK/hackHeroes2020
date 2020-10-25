@@ -2,8 +2,18 @@ import React, { Component } from 'react';
 import './Welcome.css'
 
 class Welcome extends Component {
-    state = {  }
-    render() { 
+    state = { 
+        reload: true
+     }
+
+    render() {
+        window.onload = function() {
+            if(window.location.hash) {
+                window.location = window.location + '#loaded';
+                window.location.reload();
+            }
+        }
+        
         return ( 
             <main>
                 <div id="welcome-main-holder">

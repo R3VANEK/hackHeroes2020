@@ -107,6 +107,7 @@ background: linear-gradient(132deg, rgba(92,182,255,1) 0%, rgba(87,114,240,1) 10
     line-height:2;
     margin-top:10%;
     cursor:pointer;
+    padding:1%;
     background-color: #5772f0;
 }
 #help-holder{

@@ -7,20 +7,34 @@ class Lekarze extends Component {
 
     state = { 
 
-        DUMMY_DATA_LEKARZE : [
-            { firstName: 'Łukasz', lastName : 'Kowalski', specialization : 'lekarz rodzinny', city : 'Toruń', phoneNumber : '567 890 123', rates : [80,4] },
-            { firstName: 'Adrian', lastName : 'Skalski', specialization : 'pediatra', city : 'Toruń', phoneNumber : '567 850 123', rates : [78,2] },
-            { firstName: 'Jan', lastName : 'Wąsowski', specialization : 'urolog', city : 'Wrocław', phoneNumber : '517 480 723', rates : [120,15] },
-            { firstName: 'Aneta', lastName : 'Targowska', specialization : 'psycholog', city : 'Poznań', phoneNumber : '510 480 723', rates : [40,1] }
-        ],
-        SORTED_DUMMY_DATA_LEKARZE : [
-            { firstName: 'Łukasz', lastName : 'Kowalski', specialization : 'lekarz rodzinny', city : 'Toruń', phoneNumber : '567 890 123', rates : [80,4] },
-            { firstName: 'Adrian', lastName : 'Skalski', specialization : 'pediatra', city : 'Toruń', phoneNumber : '567 850 123', rates : [78,2] },
-            { firstName: 'Jan', lastName : 'Wąsowski', specialization : 'urolog', city : 'Wrocław', phoneNumber : '517 480 723', rates : [120,15] },
-            { firstName: 'Aneta', lastName : 'Targowska', specialization : 'psycholog', city : 'Poznań', phoneNumber : '510 480 723', rates : [40,1] }
-        ],
+        lekarze: [],
 
         searchCity : ''
+    }
+
+    componentDidMount() {
+        fetch(`http://51.68.136.252:8000/get_all_doctors/` , {
+            method: 'GET',
+            mode: 'cors',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+        }).then(response => response.json())
+          .then(data => {
+            console.log(data);
+            let items = []
+            data.forEach(item =>{
+                items.push({
+                    firstName: item["first_name"],
+                    lastName: item["last_name"],
+                    specialization: item["additional_data"][0]["specialization"],
+                    city: item["additional_data"][0]["city"],
+                    phoneNumber: item["additional_data"][0]["phoneNumber"],
+                    rates: [0, 0]
+                })
+            })
+            this.setState({lekarze: items})
+        })
     }
 
     changeHandler = (event) =>{
@@ -28,15 +42,15 @@ class Lekarze extends Component {
     }
 
     submitHandler = () =>{
-        let helpArray = this.state.DUMMY_DATA_LEKARZE.filter((el)=>{
+        let helpArray = this.state.lekarze.filter((el)=>{
             return el.city == this.state.searchCity
         })
-        this.setState({SORTED_DUMMY_DATA_LEKARZE : helpArray})
+        this.setState({lekarze : helpArray})
     }
 
     render() { 
 
-        const lekarze_array = this.state.SORTED_DUMMY_DATA_LEKARZE.map((el)=>{
+        const lekarze_array = this.state.lekarze.map((el)=>{
             return(
                 <div class="lekarz-holder">
                     <div class="lekarze-img-holder"></div>

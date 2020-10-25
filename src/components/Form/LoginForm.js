@@ -9,7 +9,6 @@ class LoginForm extends Component {
     
 
     state = { 
-        role : 'Pacjent',
         password : '',
         emailAddres : '',
         errorMessage : ''
@@ -20,6 +19,28 @@ class LoginForm extends Component {
          this.setState({
              [event.target.name] : event.target.value
          })
+     }
+
+     redirectHome(){
+        return this.props.history.push('/welcome')
+    }
+
+    login = (event) => {
+                fetch(`http://51.68.136.252:8000/user/?email=${this.state.emailAddres}&password=${this.state.password}` , {
+                    method: 'GET',
+                    mode: 'cors',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                }).then(response => response.json())
+                  .then(data => {
+                    console.log(data)
+                    localStorage.setItem('user_id', data['id'])
+                    localStorage.setItem('role', data['groups'][0]['name'])
+                    localStorage.setItem('firstName', data['first_name'])
+                    localStorage.setItem('lastName', data['last_name'])
+                    return this.props.history.push('/welcome');
+                })
      }
 
 
@@ -51,7 +72,7 @@ class LoginForm extends Component {
                     
 
                     
-                    <form id="login-form">
+                    <div id="login-form">
                 
                     <div id="help-holder">
                         <p id="register-as">Zaloguj się na swoje konto</p>
@@ -59,9 +80,9 @@ class LoginForm extends Component {
                     
                     <input type="email" placeholder="Email" name="emailAddres" class="login-inputs" onChange={this.handleChange}/>
                     <input type="password" placeholder="Hasło" name="password" class="login-inputs" onChange={this.handleChange}/><br/>
-                    <input type="submit" value="Zaloguj się" id="login-button"/>
+                    <input type="submit" value="Zaloguj się" id="login-button" onClick={this.login}/>
                     <p id="error-p">{this.state.errorMessage}</p>
-                    </form>
+                    </div>
                     
 
 

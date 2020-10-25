@@ -10,10 +10,7 @@ import doctorIcon from '../../../../icons/doctor-white.svg';
 
 
 
-const LeftPanelPatient = () =>{
-
-    
-
+const LeftPanelPatient = () => {
     return(
         <aside>
             <p class="aside-title-span">Zakładki</p>

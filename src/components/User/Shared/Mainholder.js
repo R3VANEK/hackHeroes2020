@@ -23,14 +23,7 @@ import Welcome from '../Shared/Welcome'
 
 
 const Mainholder = ({path, role}) =>{
-
-    const components = {
-        
-        
-
-        
-
-    }
+    
 
     if(role == "patient"){
 

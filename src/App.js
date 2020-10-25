@@ -1,5 +1,5 @@
 import React from 'react';
-import {Switch, Route, BrowserRouter} from 'react-router-dom';
+import {Switch, Route, BrowserRouter, Redirect} from 'react-router-dom';
 import './App.css';
 
 
@@ -13,7 +13,7 @@ class  App extends React.Component {
 
 
   state = {
-    role : "doctor"
+    role : localStorage.getItem('role')
   }
 
   render(){
@@ -60,10 +60,15 @@ class  App extends React.Component {
             render={(props) => (
               <Mainholder path={"Lekarze"} role={this.state.role} />
           )}/>
-  
-          <Route path="/"
+
+          <Route path="/welcome"
             render={(props) =>(
               <Mainholder path={"Welcome"} role={this.state.role} />
+            )}/>
+
+          <Route path="/"
+            render={(props) =>(
+                <Redirect to="/register" />
             )}/>
           
         </Switch>
