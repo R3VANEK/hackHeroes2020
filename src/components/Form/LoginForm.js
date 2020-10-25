@@ -35,7 +35,7 @@ class LoginForm extends Component {
                 }).then(response => response.json())
                   .then(data => {
                     console.log(data)
-                    localStorage.setItem('user_id', data['id'])
+                    localStorage.setItem('r', data['id'])
                     localStorage.setItem('role', data['groups'][0]['name'])
                     localStorage.setItem('firstName', data['first_name'])
                     localStorage.setItem('lastName', data['last_name'])

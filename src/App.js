@@ -12,6 +12,10 @@ import LoginForm from './components/Form/LoginForm';
 class  App extends React.Component {
 
 
+  componentOnMounted(){
+    this.setState({role : localStorage.getItem('role')})
+  }
+
   state = {
     role : localStorage.getItem('role')
   }
