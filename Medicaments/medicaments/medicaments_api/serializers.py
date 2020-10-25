@@ -18,7 +18,8 @@ class DoctorSerializer(serializers.HyperlinkedModelSerializer):
 class MedicamentSerializer(serializers.HyperlinkedModelSerializer):
     medicament_date = MedicamentInjectionDateSerializer(many = True)
     doctor = DoctorSerializer()
+    patient = DoctorSerializer()
 
     class Meta:
         model = Medicament
-        fields = ['id', 'medicament', 'injection', 'doctor', 'medicament_date']
+        fields = ['id', 'medicament', 'injection', 'doctor', 'patient', 'medicament_date']

@@ -10,11 +10,13 @@ from medicaments_api.serializers import MedicamentSerializer, MedicamentInjectio
 class MedicamentsViewSet(viewsets.ViewSet):
     queryset = Medicament.objects.all()
     serializer_class = MedicamentSerializer
-    permission_classes = [permissions.IsAuthenticated]
 
     def get(self, request):
-        user_id = request.user.id
-        medicaments = Medicament.objects.filter(patient__id = user_id)
+        user = User.objects.filter(id = request.GET['user_id'])[0]
+        if user.groups.filter(name='patient'):
+          medicaments = Medicament.objects.filter(patient = user)
+        else:
+          medicaments = Medicament.objects.filter(doctor = user)
         for medicament in medicaments:
             medicament.medicament_date = MedicamentInjectionDate.objects.filter(medicament = medicament)        
         serializer = MedicamentSerializer(medicaments, many = True)
@@ -22,7 +24,7 @@ class MedicamentsViewSet(viewsets.ViewSet):
 
 
     def post(self, request):
-        user_id = request.user.id #Doctor's id
+        user_id = User.objects.filter(id = request.data['user_id'])[0].id #Doctor's id
         patient_email = request.data['patient_email']
         for medicament in request.data['medicaments']:
             new_medicament = Medicament()
