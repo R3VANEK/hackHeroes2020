@@ -20,7 +20,11 @@ Uzytkownicy są podzieleni na dwa rodzaje : doktorów i pacjentów. Zarówno jed
  - zakładka zaufani lekarze mieści w sobie informacje o doktorach z którymi pacjent odbył videorozmowę. Można tam wystawić opinię na ich temat, lub usunąć osobę z tejże listy
  - zakładka statystyki służy do zbierania danych medycznych pomocnych w diagnozie i monitorowaniu stanu pacjenta. Do pięciu dni wstecz takie dane można modyfikować. Jeżeli wejdziemy w opcję wykresy to zobaczymy indywidualne grafy każdej z danych na przestrzeni całej aktywności w aplikacji. Takie dane są udostępniane wybranym lekarzom z którymi odbywa się videorozmowa. Ponadto w tym panelu mamy sekcję z kalendarzem w którym lekarz po telefonicznym uzgodnieniu zapisuje pacjentowi datę spotkania
  - twoje recepty służy do wyświetlania aktualnie wystawionych recept razem z danymi takimi jak : nazwa leku, sposób podania i dawka oraz godzina podania
- - 
+ - zakładka videorozmowa służy do połączenia video i audio pacjenta z lekarzem. Możliwa byłaby też opcja czatu online w przypadku braku odpowiedniego sprzętu u któregoś z uczestników. Lekarz podczas takiej rozmowy miałby dostęp do danych pacjenta, które umieszcza on w statystykach
  
  
  
+-funkcjonalności doktorów
+ - w zakładce moje konto pacjenci mogą lekarze swoje dane takie jak imię, nazwisko czy telefon w razie ich zmiany
+ - zakładka wystaw recepte służy do wystawiania recept odpowiednim pacjentom
+ - zakładka videorozmowa służy do połączenia video i audio pacjenta z lekarzem. Możliwa byłaby też opcja czatu online w przypadku braku odpowiedniego sprzętu u któregoś z uczestników. Lekarz podczas takiej rozmowy miałby dostęp do danych pacjenta, które umieszcza on w statystykach
