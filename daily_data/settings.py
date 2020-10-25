@@ -40,6 +40,9 @@ INSTALLED_APPS = [
     
     # My app
     'api',
+
+    # REST FRAMEWORK
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
