@@ -5,7 +5,7 @@ class Teleporada extends Component {
     render() { 
         return ( 
             <main>
-                halo to ja Teleporada
+                Teleporada niedostępna w wersji alfa
             </main>
          );
     }

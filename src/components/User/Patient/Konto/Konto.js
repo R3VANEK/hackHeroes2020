@@ -5,7 +5,7 @@ class KontoPatient extends Component {
     render() { 
         return ( 
             <main>
-                halo to ja Konto
+                Konto niedostępne w wersji alfa
             </main>
          );
     }

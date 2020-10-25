@@ -5,7 +5,7 @@ class KontoDoctor extends Component {
     render() { 
         return ( 
             <main>
-                CO TAM DOKTORKU :-DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD
+                Konto niedostepne w wersji alfa
             </main>
          );
     }
