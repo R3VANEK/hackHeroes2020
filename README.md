@@ -47,7 +47,7 @@ Frontend part of program was written in React.js, in this repository under branc
 
 ## Backend specification
 
-lorem ipsum sid doloro
+Waiting for [Avngarde](https://github.com/Avngarde) to contact me about written backend functionalities
 
 ## Comments and adnotations
 
@@ -61,13 +61,13 @@ lorem ipsum sid doloro
 * [react-charts](https://www.npmjs.com/package/react-charts)
 
 ## How to run
-* **Frontend** : Full documentation can be viewed in branch "janek" under README.md
-*  **Backend** : lorem ipsum
+* **Frontend** : Full documentation can be viewed [here](https://github.com/R3VANEK/hackHeroes2020/blob/janek/README.md)
+*  **Backend** : Waiting for [Avngarde](https://github.com/Avngarde) to contact me about written backend functionalities
 
 
 
 ## Licence
-lorem ipsum
+All rights reserved
 
 ## Authors
 
